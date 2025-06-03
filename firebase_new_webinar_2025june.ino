@@ -11,17 +11,17 @@
 #define WIFI_PASSWORD "12345678"
 
 // Firebase credentials
-#define API_KEY "AIzaSyBKRC5iZLYW6b2_pBsEFUF-aEoEaqriV20"  //your api key
-#define USER_EMAIL "testmail@gmail.com" //your email id for auth
-#define USER_PASSWORD "test1234" //your pass for auth
-#define DATABASE_URL "https://updated-c36b3-default-rtdb.asia-southeast1.firebasedatabase.app/" //your realtime db url
+#define API_KEY "your_firebase_api_key"
+#define USER_EMAIL "your_firebase_auth_email"
+#define USER_PASSWORD "your_firebase_auth_password"
+#define DATABASE_URL "your_firebase_realtime_database_url"
 
 // Sensor Pins
 #define DHTPIN 4
 #define DHTTYPE DHT11
-#define FLAME_SENSOR_PIN 5      
-#define LDR_SENSOR_PIN 18       
-#define MQ135_PIN 34            
+#define FLAME_SENSOR_PIN 5
+#define LDR_SENSOR_PIN 18
+#define MQ135_PIN 34
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -39,23 +39,29 @@ RealtimeDatabase Database;
 
 // Timing variables
 unsigned long lastSendTime = 0;
-const unsigned long sendInterval = 3000;  // 3 seconds
+const unsigned long sendInterval = 3000; // 3 seconds
 
 // Firebase Response Handler
-void processData(AsyncResult &aResult) {
-  if (!aResult.isResult()) {
+void processData(AsyncResult &aResult)
+{
+  if (!aResult.isResult())
+  {
     Serial.println("[processData] No result available.");
     return;
   }
 
-  if (aResult.isError()) {
+  if (aResult.isError())
+  {
     Serial.printf("[processData] Error (%s): %s\n", aResult.uid().c_str(), aResult.error().message().c_str());
-  } else if (aResult.available()) {
+  }
+  else if (aResult.available())
+  {
     Serial.printf("[processData] Success (%s): %s\n", aResult.uid().c_str(), aResult.c_str());
   }
 }
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   delay(1000);
   dht.begin();
@@ -75,16 +81,19 @@ void setup() {
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
   int attempts = 0;
-  while (WiFi.status() != WL_CONNECTED && attempts < 30) {
+  while (WiFi.status() != WL_CONNECTED && attempts < 30)
+  {
     Serial.print(".");
     delay(500);
     attempts++;
   }
   Serial.println();
 
-  if (WiFi.status() != WL_CONNECTED) {
+  if (WiFi.status() != WL_CONNECTED)
+  {
     Serial.println("[WiFi] Failed to connect!");
-    while (true); // Halt
+    while (true)
+      ; // Halt
   }
 
   Serial.print("[WiFi] Connected! IP: ");
@@ -100,7 +109,8 @@ void setup() {
 
   // 🔁 Wait until app is ready
   Serial.println("[Firebase] Waiting for app to be ready...");
-  while (!app.ready()) {
+  while (!app.ready())
+  {
     Serial.print(".");
     app.loop();
     delay(100);
@@ -114,12 +124,14 @@ void setup() {
   Database.url(DATABASE_URL);
 }
 
-void loop() {
+void loop()
+{
   app.loop(); // must be called continuously
 
   unsigned long currentTime = millis();
 
-  if (app.ready() && currentTime - lastSendTime >= sendInterval) {
+  if (app.ready() && currentTime - lastSendTime >= sendInterval)
+  {
     lastSendTime = currentTime;
     Serial.println("[loop] Reading sensors and sending data...");
 
@@ -129,7 +141,8 @@ void loop() {
     int ldr = digitalRead(LDR_SENSOR_PIN);
     int gasValue = analogRead(MQ135_PIN);
 
-    if (isnan(temp) || isnan(hum)) {
+    if (isnan(temp) || isnan(hum))
+    {
       Serial.println("[DHT] Failed to read from sensor!");
       return;
     }
