@@ -226,5 +226,5 @@ Feel free to submit issues, fork the repository, and create pull requests for im
 For issues and questions:
 
 1. Check the troubleshooting section
-2. Review Firebase documentation Here[https://github.com/mobizt/FirebaseClient]
+2. Review Firebase documentation [here](https://github.com/mobizt/FirebaseClient)
 3. Check sensor datasheets for proper connections
