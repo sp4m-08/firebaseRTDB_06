@@ -155,7 +155,7 @@ void loop()
     // Upload to Firebase
     Database.set<float>(async_db, "/iot/device/temperature", temp, processData, "SetTemp");
     Database.set<float>(async_db, "/iot/device/humidity", hum, processData, "SetHumidity");
-    String flameStatus = (ldr == 0) ? "Flame!" : "No flame :D";
+    String flameStatus = (ldr == 1) ? "Flame!" : "No flame :D";
     Database.set<String>(async_db, "/iot/device/flame", flameStatus, processData, "SetFlame");
     String lightStatus = (ldr == 0) ? "Light" : "Dark";
     Database.set<String>(async_db, "/iot/device/ldr", lightStatus, processData, "SetLDR");
