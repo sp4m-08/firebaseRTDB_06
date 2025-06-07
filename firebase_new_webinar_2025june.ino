@@ -17,10 +17,10 @@
 #define DATABASE_URL "your_db_url"    // your realtime db url
 
 // Sensor Pins
-#define DHTPIN 4
+#define DHTPIN 14
 #define DHTTYPE DHT11
-#define FLAME_SENSOR_PIN 5
-#define LDR_SENSOR_PIN 18
+#define FLAME_SENSOR_PIN 27
+#define LDR_SENSOR_PIN 35
 #define MQ135_PIN 34
 
 DHT dht(DHTPIN, DHTTYPE);
