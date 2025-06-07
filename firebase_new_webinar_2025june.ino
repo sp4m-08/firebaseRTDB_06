@@ -11,10 +11,10 @@
 #define WIFI_PASSWORD "12345678"
 
 // Firebase credentials
-#define API_KEY "your api key"        // your api key
-#define USER_EMAIL "your_email_id"    // your email id for auth
-#define USER_PASSWORD "your_password" // your pass for auth
-#define DATABASE_URL "your_db_url"    // your realtime db url
+#define API_KEY "AIzaSyBKRC5iZLYW6b2_pBsEFUF-aEoEaqriV20"        // your api key
+#define USER_EMAIL "testuser@gmail.com"    // your email id for auth
+#define USER_PASSWORD "pass1234" // your pass for auth
+#define DATABASE_URL "https://updated-c36b3-default-rtdb.asia-southeast1.firebasedatabase.app/"    // your realtime db url
 
 // Sensor Pins
 #define DHTPIN 14
@@ -155,9 +155,9 @@ void loop()
     // Upload to Firebase
     Database.set<float>(async_db, "/iot/device/temperature", temp, processData, "SetTemp");
     Database.set<float>(async_db, "/iot/device/humidity", hum, processData, "SetHumidity");
-    String flameStatus = (ldr == 1) ? "Flame!" : "No flame :D";
+    String flameStatus = (flame == 1) ? "Flame" : "No flame :D";
     Database.set<String>(async_db, "/iot/device/flame", flameStatus, processData, "SetFlame");
-    String lightStatus = (ldr == 0) ? "Light" : "Dark";
+    String lightStatus = (ldr == 1) ? "Light" : "Dark";
     Database.set<String>(async_db, "/iot/device/ldr", lightStatus, processData, "SetLDR");
     Database.set<int>(async_db, "/iot/device/gas", gasValue, processData, "SetGas");
   }
