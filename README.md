@@ -3,7 +3,8 @@
 A comprehensive smart room monitoring system built for ESP32 that collects environmental data and streams it to Firebase Realtime Database in real-time.
 
 ## Dashboard
--`https://rms-frontend-peach.vercel.app/`
+[Dashboard](https://rms-frontend-peach.vercel.app/)
+
 
 ## 🌟 Features
 
@@ -14,7 +15,8 @@ A comprehensive smart room monitoring system built for ESP32 that collects envir
 - **Wi-Fi Connectivity**: Automatic connection management with retry logic
 
 ## Web Dashboard Repository
--`https://github.com/tanishka3001/RMS-Frontend`
+[Repo](https://github.com/tanishka3001/RMS-Frontend)
+
 
 ## 📋 Hardware Requirements
 
