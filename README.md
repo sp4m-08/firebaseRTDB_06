@@ -1,6 +1,9 @@
-# Smart IoT Room Monitoring System
+<img width="1526" height="985" alt="image" src="https://github.com/user-attachments/assets/379b6f10-e1e3-4b27-ba16-a755ed8de878" /># Smart IoT Room Monitoring System
 
 A comprehensive smart room monitoring system built for ESP32 that collects environmental data and streams it to Firebase Realtime Database in real-time.
+
+## Dashboard
+-`https://rms-frontend-peach.vercel.app/`
 
 ## 🌟 Features
 
@@ -9,6 +12,9 @@ A comprehensive smart room monitoring system built for ESP32 that collects envir
 - **Firebase Integration**: Secure authentication and real-time database connectivity
 - **Robust Error Handling**: Built-in error detection and logging
 - **Wi-Fi Connectivity**: Automatic connection management with retry logic
+
+## Web Dashboard Repository
+-`https://github.com/tanishka3001/RMS-Frontend`
 
 ## 📋 Hardware Requirements
 
